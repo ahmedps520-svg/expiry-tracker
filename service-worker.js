@@ -6,7 +6,7 @@ Part 1 of 2
 ====================================
 */
 
-const CACHE_NAME = "expiry-tracker-v1";
+const CACHE_NAME = "expiry-tracker-v2";
 
 const APP_FILES = [
 

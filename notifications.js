@@ -162,13 +162,10 @@ function sendExpiryNotification(product) {
 
     }
 
-    new Notification("Expiry Tracker", {
-
-        body,
-
-        icon: "icons/icon-192.png"
-
-    });
+   new Notification("Expiry Tracker", {
+    body,
+    icon: "icons/test.png"
+});
 
 }
 
