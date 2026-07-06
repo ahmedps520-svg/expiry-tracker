@@ -1,0 +1,626 @@
+
+:root{
+
+    --bg:#0f1115;
+    --card:#1a1d24;
+    --card2:#232730;
+    --accent:#ff3b3b;
+    --accentDark:#c81d25;
+    --text:#ffffff;
+    --muted:#9aa4b2;
+    --radius:22px;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,sans-serif;
+
+}
+
+.app{
+
+    max-width:520px;
+    margin:auto;
+    padding:24px;
+
+}
+
+header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:28px;
+
+}
+
+header h1{
+
+    font-size:34px;
+    font-weight:800;
+
+}
+
+header p{
+
+    color:var(--muted);
+    margin-top:4px;
+
+}
+
+.headerButtons{
+
+    display:flex;
+    gap:12px;
+
+}
+
+.headerButtons button{
+
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:16px;
+    background:var(--card);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+
+}
+
+.hero{
+
+    display:grid;
+    gap:16px;
+    margin-bottom:28px;
+
+}
+
+.scanButton,
+.manualButton{
+
+    border:none;
+    border-radius:20px;
+    padding:18px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+.scanButton{
+
+    background:var(--accent);
+    color:white;
+
+}
+
+.manualButton{
+
+    background:var(--card);
+    color:white;
+
+}
+
+.scanButton:hover,
+.manualButton:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.searchSection{
+
+    display:flex;
+    gap:12px;
+    margin-bottom:24px;
+
+}
+
+.searchSection input{
+
+    flex:1;
+    border:none;
+    border-radius:18px;
+    padding:16px;
+    background:var(--card);
+    color:white;
+    font-size:16px;
+
+}
+
+#sortButton{
+
+    width:58px;
+    border:none;
+    border-radius:18px;
+    background:var(--card);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+
+}
+
+.statsSection{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:24px;
+
+}
+
+.statCard{
+
+    background:var(--card);
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+
+}
+
+.statCard h2{
+
+    font-size:34px;
+    margin-bottom:8px;
+
+}
+
+.statCard p{
+
+    color:var(--muted);
+
+}
+/* Part 2 of 2 — style.css (append this after Part 1) */
+
+.productList{
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+}
+
+.productCard{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px;
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    transition:.25s;
+
+}
+
+.productCard:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.productInfo h3{
+
+    font-size:20px;
+    margin-bottom:6px;
+
+}
+
+.productInfo p{
+
+    color:var(--muted);
+
+}
+
+.deleteButton{
+
+    min-width:90px;
+    height:44px;
+
+    border:none;
+    border-radius:14px;
+
+    background:var(--accent);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.emptyState{
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    background:var(--card);
+
+    border-radius:24px;
+
+}
+
+.emptyIcon{
+
+    font-size:64px;
+
+    margin-bottom:18px;
+
+}
+
+.scannerContainer{
+
+    display:none;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    margin-bottom:24px;
+
+    background:#000;
+
+}
+
+.scannerContainer.show{
+
+    display:block;
+
+}
+
+#scanner{
+
+    width:100%;
+    min-height:320px;
+
+}
+
+.closeScanner{
+
+    position:absolute;
+
+    top:16px;
+    right:16px;
+
+    width:46px;
+    height:46px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:10;
+
+}
+
+.scannerOverlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    pointer-events:none;
+
+}
+
+.scanFrame{
+
+    width:240px;
+    height:240px;
+
+    border:4px solid white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.scanLine{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    height:4px;
+
+    background:red;
+
+    animation:scan 2s linear infinite;
+
+}
+
+@keyframes scan{
+
+    0%{top:0;}
+
+    50%{top:calc(100% - 4px);}
+
+    100%{top:0;}
+
+}
+
+.productSheet{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    background:#171a20;
+
+    border-radius:32px 32px 0 0;
+
+    padding:28px;
+
+    transform:translateY(110%);
+
+    transition:.35s;
+
+    z-index:9999;
+
+}
+
+.productSheet.show{
+
+    transform:translateY(0);
+
+}
+
+.sheetHandle{
+
+    width:70px;
+    height:6px;
+
+    margin:0 auto 22px;
+
+    border-radius:999px;
+
+    background:#555;
+
+}
+
+.sheetHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:26px;
+
+}
+
+.sheetIcon{
+
+    width:72px;
+    height:72px;
+
+    border-radius:20px;
+
+    background:linear-gradient(135deg,var(--accent),var(--accentDark));
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+}
+
+.sheetHeader h2{
+
+    font-size:28px;
+
+    margin-bottom:4px;
+
+}
+
+.sheetHeader p{
+
+    color:var(--muted);
+
+}
+
+.productSheet input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:var(--card2);
+
+    color:white;
+
+    font-size:16px;
+
+    margin-bottom:18px;
+
+}
+
+.sectionTitle{
+
+    margin:8px 0 14px;
+
+}
+
+.presetDays{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.dayPreset{
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:var(--card2);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.dayPreset.active{
+
+    background:var(--accent);
+
+}
+
+.daySelector{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin:24px 0;
+
+}
+
+.daySelector button{
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    color:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}
+
+#dayCount{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.rememberRow{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:20px 0;
+
+}
+
+.sheetButtons{
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+.sheetButtons button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.primaryButton{
+
+    background:var(--accent);
+
+    color:white;
+
+}
+
+.secondaryButton{
+
+    background:var(--card2);
+
+    color:white;
+
+}
+
+@media(max-width:760px){
+
+    .statsSection{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

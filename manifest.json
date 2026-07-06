@@ -1,0 +1,37 @@
+{
+  "name": "Expiry Tracker",
+  "short_name": "Expiry",
+  "description": "Track food expiry dates and receive reminders before products expire.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#22c55e",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./icons/test.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshots/desktop.png",
+      "sizes": "2556x1289",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./screenshots/mobile.png",
+     "sizes": "424x926",
+      "type": "image/png"
+    }
+  ]
+}

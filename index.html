@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expiry Tracker</title>
+
+<meta name="theme-color" content="#22c55e">
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes">
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default">
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Expiry Tracker">
+
+<link
+    rel="apple-touch-icon"
+    href="icons/icon-192.png">
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+
+    <script src="storage.js" defer></script>
+    <script src="notifications.js" defer></script>
+    <script src="scanner.js" defer></script>
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+
+    <div>
+
+        <h1>Expiry Tracker</h1>
+        <p>Keep track of opened products</p>
+
+    </div>
+
+    <div class="headerButtons">
+
+        <button id="notificationButton">🔔</button>
+        <button id="settingsButton">⚙️</button>
+
+    </div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+    <button id="scanButton" class="scanButton">
+
+        📷 Scan Product
+
+    </button>
+
+    <button id="manualButton" class="manualButton">
+
+        ➕ Add Product Manually
+
+    </button>
+
+</section>
+
+<div id="scannerContainer" class="scannerContainer hidden">
+
+    <div id="scanner"></div>
+
+    <button id="closeScanner" class="closeScanner">
+        ✕
+    </button>
+
+    <div class="scannerOverlay">
+
+        <div class="scanFrame">
+            <div class="scanLine"></div>
+        </div>
+
+        <p>Align the barcode inside the frame</p>
+
+    </div>
+
+</div>
+
+<div id="productSheet" class="productSheet hidden">
+
+    <div class="sheetHandle"></div>
+
+    <div class="sheetHeader">
+
+        <div class="sheetIcon">
+
+            📦
+
+        </div>
+
+        <div>
+
+            <h2 id="sheetTitle">Add Product</h2>
+
+            <p>Fill in the product details below.</p>
+
+        </div>
+
+    </div>
+
+    <input
+        id="productName"
+        type="text"
+        placeholder="🥛 Product name">
+
+    <input
+        id="productBarcode"
+        type="text"
+        placeholder="🏷 Barcode (optional)">
+
+    <h3 class="sectionTitle">
+
+        Consume Within
+
+    </h3>
+
+    <div class="presetDays">
+
+        <button class="dayPreset" data-days="1">1</button>
+        <button class="dayPreset" data-days="3">3</button>
+        <button class="dayPreset active" data-days="5">5</button>
+        <button class="dayPreset" data-days="7">7</button>
+        <button class="dayPreset" data-days="14">14</button>
+
+    </div>
+
+    <div class="daySelector">
+
+        <button id="minusDay">−</button>
+
+        <span id="dayCount">
+
+            5 Days
+
+        </span>
+
+        <button id="plusDay">+</button>
+
+    </div>
+
+    <label class="rememberRow">
+
+        <input
+            id="rememberBarcode"
+            type="checkbox"
+            checked>
+
+        Remember this barcode
+
+    </label>
+
+    <div class="sheetButtons">
+
+        <button
+            id="cancelProduct"
+            class="secondaryButton">
+
+            Cancel
+
+        </button>
+
+        <button
+            id="saveProduct"
+            class="primaryButton">
+
+            Save Product
+
+        </button>
+
+    </div>
+
+</div>
+    <section class="searchSection">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="🔍 Search products...">
+
+        <button id="sortButton">
+
+            ⇅
+
+        </button>
+
+    </section>
+
+    <section class="statsSection">
+
+        <div class="statCard">
+
+            <h2 id="safeCount">0</h2>
+            <p>Safe</p>
+
+        </div>
+
+        <div class="statCard">
+
+            <h2 id="soonCount">0</h2>
+            <p>Expiring Soon</p>
+
+        </div>
+
+        <div class="statCard">
+
+            <h2 id="expiredCount">0</h2>
+            <p>Expired</p>
+
+        </div>
+
+    </section>
+
+    <section
+        id="productList"
+        class="productList">
+
+        <div class="emptyState">
+
+            <div class="emptyIcon">
+
+                📦
+
+            </div>
+
+            <h3>
+
+                No products yet
+
+            </h3>
+
+            <p>
+
+                Tap "Scan Product" or "Add Product Manually" to get started.
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+</body>
+
+</html>
